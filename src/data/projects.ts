@@ -9,6 +9,7 @@ export type Project = {
   linkLabel: string;
   status: string;
   features: string[];
+  references: string[];
 };
 
 export const projects: Project[] = [
@@ -23,18 +24,20 @@ export const projects: Project[] = [
     linkLabel: 'View project',
     status: 'public repository',
     features: ['Web search and full-page extraction', 'SQLite full-text indexing', 'Recursive research pulses', 'RSS and Atom feed ingestion', 'Streaming synthesis with inline citations'],
+    references: ['sift/README.md'],
   },
   {
     slug: 'scribble',
     title: 'Scribble',
     type: 'Creative tools',
-    description: 'A handwriting-to-text system built around drawing, on-device recognition, local persistence, and offline-friendly work.',
-    scope: 'A connected writing system spanning handwritten input, OCR, local notebooks, and an offline queue so the work remains available when the network does not.',
+    description: 'A tablet-first canvas for handwriting, browser-side OCR, local notebooks, and an offline FIFO send queue.',
+    scope: 'A Phase 1 web MVP that keeps the writing flow local: draw on the canvas, recognize with Tesseract.js, persist notebooks in IndexedDB, and queue sends before transport.',
     stack: 'TypeScript · Go · Tesseract.js · PWA',
     href: 'https://github.com/gh0stprince',
     linkLabel: 'Profile / private build',
     status: 'private build',
-    features: ['Canvas-based handwriting input', 'OCR-assisted text conversion', 'IndexedDB local persistence', 'Offline submission queue', 'Bridge-ready web architecture'],
+    features: ['Vite and TypeScript tablet-first canvas', 'Tesseract.js browser-side OCR', 'Dexie / IndexedDB notebooks', 'Persist-before-transport send semantics', 'Oldest-first offline FIFO queue', 'Go same-origin API proxy'],
+    references: ['scribble-web/README.md', 'scribble-web/web/README.md'],
   },
   {
     slug: 'contract-autopsy',
@@ -47,6 +50,7 @@ export const projects: Project[] = [
     linkLabel: 'Profile / private build',
     status: 'private build',
     features: ['ERC-721 contract inspection', 'Death and liveness signals', 'Mint and metadata checks', 'Holder-to-supply analysis', 'Plain-English post-mortem output'],
+    references: ['contract-autopsy/README.md'],
   },
   {
     slug: 'inn-protocol',
@@ -59,5 +63,6 @@ export const projects: Project[] = [
     linkLabel: 'Profile / local build',
     status: 'local build',
     features: ['Agent-first inn:// protocol', 'TCP server and client reference implementation', 'WireGuard / tailnet trust model', 'Formal protocol specification', '333 passing tests'],
+    references: ['inn/README.md', 'inn/SPEC.md'],
   },
 ];

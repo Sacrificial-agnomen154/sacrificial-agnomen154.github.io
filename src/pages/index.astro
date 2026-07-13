@@ -43,7 +43,7 @@ import { projects } from '../data/projects';
         </div>
         <div class="project-list">
           {projects.map((project) => (
-            <article class="project-row" role="button" tabindex="0" data-dialog-target={`build-${project.slug}`} aria-haspopup="dialog">
+            <article class="project-row">
               <div class="project-terminal-bar">
                 <span>~/builds/{project.title.toLowerCase().replaceAll(' ', '-')}</span>
                 <span>{project.linkLabel}</span>
@@ -58,6 +58,7 @@ import { projects } from '../data/projects';
                 <p>{project.stack}</p>
                 <span class="arrow-link">Open build <span aria-hidden="true">↗</span></span>
               </div>
+              <button class="project-card-hotspot" type="button" data-dialog-target={`build-${project.slug}`} onclick={`document.getElementById('build-${project.slug}')?.showModal()`} aria-haspopup="dialog" aria-label={`Open ${project.title} build details`}></button>
             </article>
           ))}
         </div>
@@ -77,6 +78,7 @@ import { projects } from '../data/projects';
               </ul>
               <div class="dialog-footer">
                 <span>{project.stack} · {project.status}</span>
+                <span>refs: {project.references.join(' · ')}</span>
                 <a href={project.href}>{project.linkLabel} ↗</a>
               </div>
             </div>
@@ -145,8 +147,10 @@ import { projects } from '../data/projects';
   .section-heading { display: grid; grid-template-columns: 180px minmax(0, 1fr); gap: 2rem; margin-bottom: 3rem; }
   h2 { max-width: 700px; margin: 0; font-size: clamp(2rem, 4.8vw, 4.5rem); letter-spacing: -.07em; line-height: 1.08; font-weight: 600; }
   .project-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; }
-  .project-row { display: grid; grid-template-columns: 1fr; gap: 1.25rem; min-height: 290px; margin-top: 0; padding: 0 1.35rem 1.35rem; border: 1px solid #45475a; background: #11111b; box-shadow: inset 0 0 0 1px #181825; cursor: pointer; }
+  .project-row { position: relative; display: grid; grid-template-columns: 1fr; gap: 1.25rem; min-height: 290px; margin-top: 0; padding: 0 1.35rem 1.35rem; border: 1px solid #45475a; background: #11111b; box-shadow: inset 0 0 0 1px #181825; }
   .project-row:hover { border-color: #7f849c; }
+  .project-card-hotspot { position: absolute; inset: 0; z-index: 2; width: 100%; height: 100%; border: 0; background: transparent; cursor: pointer; }
+  .project-card-hotspot:focus-visible { outline: 3px solid #f9e2af; outline-offset: -5px; }
   .project-terminal-bar { display: flex; justify-content: space-between; gap: 1rem; padding: .7rem 0; border-bottom: 1px dashed #313244; color: #7f849c; font-family: 'VT323', monospace; font-size: 1.05rem; }
   .project-terminal-bar span:last-child { color: #a6e3a1; }
   .project-number { display: none; }
@@ -210,12 +214,6 @@ import { projects } from '../data/projects';
     if (!dialog) return;
     const open = () => dialog.showModal();
     card.addEventListener('click', open);
-    card.addEventListener('keydown', (event) => {
-      if (event.key === 'Enter' || event.key === ' ') {
-        event.preventDefault();
-        open();
-      }
-    });
     dialog.querySelector('[data-close]')?.addEventListener('click', () => dialog.close());
     dialog.addEventListener('click', (event) => {
       if (event.target === dialog) dialog.close();
