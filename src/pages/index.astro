@@ -71,6 +71,10 @@ const projects = [
         <div class="project-list">
           {projects.map((project) => (
             <article class="project-row">
+              <div class="project-terminal-bar">
+                <span>~/builds/{project.title.toLowerCase().replaceAll(' ', '-')}</span>
+                <span>{project.linkLabel}</span>
+              </div>
               <span class="project-number" aria-hidden="true">›</span>
               <div class="project-main">
                 <p class="project-type">{project.type}</p>
@@ -137,11 +141,13 @@ const projects = [
   .hero-bottom { display: grid; grid-template-columns: minmax(0, 420px) auto; gap: 3rem; align-items: end; }
   .hero-copy { margin: 0; font-size: 1.05rem; }
   .text-link, .arrow-link, .contact-link { font-weight: 700; text-decoration-thickness: 1px; text-underline-offset: .35em; }
-  .work-section, .about-section { padding: 7rem 0; border-bottom: 1px solid #45475a; }
-  .section-heading { display: grid; grid-template-columns: 180px minmax(0, 1fr); gap: 2rem; margin-bottom: 4rem; }
+  .work-section, .about-section { padding: 5.5rem 0; border-bottom: 1px solid #45475a; }
+  .section-heading { display: grid; grid-template-columns: 180px minmax(0, 1fr); gap: 2rem; margin-bottom: 3rem; }
   h2 { max-width: 700px; margin: 0; font-size: clamp(2rem, 4.8vw, 4.5rem); letter-spacing: -.07em; line-height: 1.08; font-weight: 600; }
-  .project-row { display: grid; grid-template-columns: 35px minmax(0, 1fr) minmax(160px, 220px); gap: 2rem; padding: 2rem 0; border-top: 1px solid #45475a; }
-  .project-number { color: #f9e2af; font-size: 1.2rem; }
+  .project-row { display: grid; grid-template-columns: 35px minmax(0, 1fr) minmax(160px, 220px); gap: 1.5rem; margin-top: 1rem; padding: 0 1.5rem 1.5rem; border: 1px solid #45475a; background: #181825; }
+  .project-terminal-bar { grid-column: 1 / -1; display: flex; justify-content: space-between; gap: 1rem; padding: .7rem 0; border-bottom: 1px solid #313244; color: #7f849c; font-size: .72rem; }
+  .project-terminal-bar span:last-child { color: #a6e3a1; }
+  .project-number { color: #f9e2af; padding-top: .1rem; font-size: 1.2rem; }
   .project-main h3 { margin: .35rem 0 .7rem; font-size: clamp(1.7rem, 3vw, 2.5rem); letter-spacing: -.05em; }
   .project-main h3 a { text-decoration: none; }
   .project-main h3 a:hover { color: #a6e3a1; }
@@ -164,7 +170,8 @@ const projects = [
     .hero-bottom, .about-section { grid-template-columns: 1fr; gap: 2rem; }
     .section-heading { display: block; }
     .section-heading .eyebrow { margin-bottom: 1.3rem; }
-    .project-row { grid-template-columns: 35px minmax(0, 1fr); gap: 1rem; }
+    .project-row { grid-template-columns: 25px minmax(0, 1fr); gap: .85rem; padding-left: 1rem; padding-right: 1rem; }
+    .project-terminal-bar { font-size: .65rem; }
     .project-meta { grid-column: 2; gap: 1.3rem; }
     .site-footer { display: block; }
     .site-footer p + p { margin-top: .5rem; }
