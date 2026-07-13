@@ -1,38 +1,5 @@
 ---
-const projects = [
-  {
-    title: 'Sift',
-    type: 'Research infrastructure',
-    description: 'A local research engine that searches, crawls, indexes, and synthesizes the web while keeping the material close at hand.',
-    stack: 'Python · SQLite FTS5 · LLM APIs',
-    href: 'https://github.com/gh0stprince/sift',
-    linkLabel: 'View project'
-  },
-  {
-    title: 'Scribble',
-    type: 'Creative tools',
-    description: 'A handwriting-to-text system built around drawing, on-device recognition, local persistence, and offline-friendly work.',
-    stack: 'TypeScript · Go · Tesseract.js · PWA',
-    href: 'https://github.com/gh0stprince',
-    linkLabel: 'Private build'
-  },
-  {
-    title: 'Contract Autopsy',
-    type: 'On-chain tooling',
-    description: 'A plain-English post-mortem for ERC-721 contracts, turning on-chain state into a report people can actually read.',
-    stack: 'TypeScript · OpenSea SDK · Base',
-    href: 'https://github.com/gh0stprince',
-    linkLabel: 'Private build'
-  },
-  {
-    title: 'Inn Protocol',
-    type: 'Protocol design',
-    description: 'An agent-first application protocol for communication across a trusted private network, with a formal specification and reference implementation.',
-    stack: 'Python · TCP · WireGuard · 333 tests',
-    href: 'https://github.com/gh0stprince',
-    linkLabel: 'Local build'
-  }
-];
+import { projects } from '../data/projects';
 ---
 
 <html lang="en">
@@ -84,12 +51,12 @@ const projects = [
               <span class="project-number" aria-hidden="true">›</span>
               <div class="project-main">
                 <p class="project-type">{project.type}</p>
-                <h3><a href={project.href}>{project.title}</a></h3>
+                <h3><a href={`/builds/${project.slug}/`}>{project.title}</a></h3>
                 <p class="project-description">{project.description}</p>
               </div>
               <div class="project-meta">
                 <p>{project.stack}</p>
-                <a class="arrow-link" href={project.href} aria-label={`${project.linkLabel}: ${project.title}`}>{project.linkLabel} <span aria-hidden="true">↗</span></a>
+                <a class="arrow-link" href={`/builds/${project.slug}/`} aria-label={`Open build details: ${project.title}`}>Open build <span aria-hidden="true">↗</span></a>
               </div>
             </article>
           ))}
