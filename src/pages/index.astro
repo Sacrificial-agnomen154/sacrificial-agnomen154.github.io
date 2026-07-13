@@ -69,9 +69,9 @@ const projects = [
           <h2 id="work-title">Things I have been building.</h2>
         </div>
         <div class="project-list">
-          {projects.map((project, index) => (
+          {projects.map((project) => (
             <article class="project-row">
-              <span class="project-number" aria-hidden="true">0{index + 1}</span>
+              <span class="project-number" aria-hidden="true">›</span>
               <div class="project-main">
                 <p class="project-type">{project.type}</p>
                 <h3><a href={project.href}>{project.title}</a></h3>
@@ -112,49 +112,50 @@ const projects = [
 </html>
 
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&display=swap');
 
   :global(*) { box-sizing: border-box; }
   :global(html) { scroll-behavior: smooth; }
-  :global(body) { margin: 0; background: #f3f0e9; color: #1e211d; font-family: 'Manrope', sans-serif; font-size: 16px; line-height: 1.6; }
+  :global(body) { margin: 0; background: #1e1e2e; color: #cdd6f4; font-family: 'IBM Plex Mono', monospace; font-size: 16px; line-height: 1.6; }
   :global(a) { color: inherit; }
-  :global(a:focus-visible) { outline: 3px solid #b45134; outline-offset: 5px; }
-  .skip-link { position: absolute; left: 1rem; top: -4rem; padding: .65rem 1rem; background: #1e211d; color: #f3f0e9; z-index: 10; }
+  :global(a:focus-visible) { outline: 3px solid #f9e2af; outline-offset: 5px; }
+  .skip-link { position: absolute; left: 1rem; top: -4rem; padding: .65rem 1rem; background: #313244; color: #cdd6f4; z-index: 10; }
   .skip-link:focus { top: 1rem; }
   .site-header, .site-footer, main { max-width: 1180px; margin: 0 auto; padding-left: 2rem; padding-right: 2rem; }
-  .site-header { display: flex; justify-content: space-between; align-items: center; padding-top: 1.75rem; }
-  .wordmark { font-size: 2rem; font-weight: 800; text-decoration: none; letter-spacing: -.1em; }
-  .wordmark span { color: #b45134; }
-  nav { display: flex; gap: 1.5rem; font-family: 'DM Mono', monospace; font-size: .78rem; }
+  .site-header { display: flex; justify-content: space-between; align-items: center; padding-top: 1.75rem; padding-bottom: 1.1rem; border-bottom: 1px solid #45475a; }
+  .wordmark { font-size: 2rem; font-weight: 600; text-decoration: none; letter-spacing: -.1em; }
+  .wordmark span { color: #a6e3a1; }
+  nav { display: flex; gap: 1.5rem; font-size: .78rem; }
   nav a { text-decoration: none; }
-  nav a:hover, nav a:focus-visible, .text-link:hover, .arrow-link:hover { color: #b45134; }
-  .hero { padding: clamp(6rem, 16vw, 12rem) 0 clamp(6rem, 13vw, 10rem); border-bottom: 1px solid #c9c4b8; }
-  .eyebrow, .project-type { margin: 0; color: #b45134; font-family: 'DM Mono', monospace; font-size: .72rem; font-weight: 500; letter-spacing: .08em; text-transform: uppercase; }
+  nav a:hover, nav a:focus-visible, .text-link:hover, .arrow-link:hover { color: #a6e3a1; }
+  .hero { padding: clamp(6rem, 16vw, 12rem) 0 clamp(6rem, 13vw, 10rem); border-bottom: 1px solid #45475a; }
+  .eyebrow, .project-type { margin: 0; color: #a6e3a1; font-size: .72rem; font-weight: 500; letter-spacing: .08em; text-transform: uppercase; }
+  .eyebrow::before { content: '> '; color: #f9e2af; }
   h1, h2, h3, p { margin-top: 0; }
-  h1 { max-width: 900px; margin: 1.2rem 0 3rem; font-size: clamp(3.2rem, 8vw, 7.4rem); line-height: .98; letter-spacing: -.075em; font-weight: 700; }
-  h1 em, h2 em { color: #b45134; font-style: normal; }
+  h1 { max-width: 1000px; margin: 1.2rem 0 3rem; font-size: clamp(2.8rem, 7.6vw, 6.8rem); line-height: 1.02; letter-spacing: -.075em; font-weight: 600; }
+  h1 em, h2 em { color: #a6e3a1; font-style: normal; }
   .hero-bottom { display: grid; grid-template-columns: minmax(0, 420px) auto; gap: 3rem; align-items: end; }
   .hero-copy { margin: 0; font-size: 1.05rem; }
   .text-link, .arrow-link, .contact-link { font-weight: 700; text-decoration-thickness: 1px; text-underline-offset: .35em; }
-  .work-section, .about-section { padding: 7rem 0; border-bottom: 1px solid #c9c4b8; }
+  .work-section, .about-section { padding: 7rem 0; border-bottom: 1px solid #45475a; }
   .section-heading { display: grid; grid-template-columns: 180px minmax(0, 1fr); gap: 2rem; margin-bottom: 4rem; }
-  h2 { max-width: 700px; margin: 0; font-size: clamp(2.3rem, 5vw, 4.8rem); letter-spacing: -.07em; line-height: 1.02; }
-  .project-row { display: grid; grid-template-columns: 70px minmax(0, 1fr) minmax(160px, 220px); gap: 2rem; padding: 2rem 0; border-top: 1px solid #c9c4b8; }
-  .project-number { color: #8d897f; font-family: 'DM Mono', monospace; font-size: .8rem; }
+  h2 { max-width: 700px; margin: 0; font-size: clamp(2rem, 4.8vw, 4.5rem); letter-spacing: -.07em; line-height: 1.08; font-weight: 600; }
+  .project-row { display: grid; grid-template-columns: 35px minmax(0, 1fr) minmax(160px, 220px); gap: 2rem; padding: 2rem 0; border-top: 1px solid #45475a; }
+  .project-number { color: #f9e2af; font-size: 1.2rem; }
   .project-main h3 { margin: .35rem 0 .7rem; font-size: clamp(1.7rem, 3vw, 2.5rem); letter-spacing: -.05em; }
   .project-main h3 a { text-decoration: none; }
-  .project-main h3 a:hover { color: #b45134; }
-  .project-description { max-width: 570px; margin-bottom: 0; color: #4e514a; }
-  .project-meta { display: flex; flex-direction: column; justify-content: space-between; gap: 1rem; color: #65685f; font-family: 'DM Mono', monospace; font-size: .73rem; }
+  .project-main h3 a:hover { color: #a6e3a1; }
+  .project-description { max-width: 570px; margin-bottom: 0; color: #a6adc8; }
+  .project-meta { display: flex; flex-direction: column; justify-content: space-between; gap: 1rem; color: #a6adc8; font-size: .73rem; }
   .project-meta p { margin: 0; }
-  .arrow-link { color: #1e211d; font-family: 'Manrope', sans-serif; font-size: .85rem; }
+  .arrow-link { color: #cdd6f4; font-size: .85rem; }
   .about-section { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; }
   .about-copy { max-width: 540px; font-size: 1.1rem; }
   .about-copy p + p { margin-top: 1.5rem; }
   .contact-section { padding: 9rem 0 10rem; }
   .contact-section h2 { margin: 1rem 0 2.5rem; }
   .contact-link { font-size: clamp(1rem, 2vw, 1.35rem); }
-  .site-footer { display: flex; justify-content: space-between; padding-top: 1.5rem; padding-bottom: 2rem; color: #74766e; font-family: 'DM Mono', monospace; font-size: .68rem; }
+  .site-footer { display: flex; justify-content: space-between; padding-top: 1.5rem; padding-bottom: 2rem; color: #7f849c; font-size: .68rem; }
   .site-footer p { margin: 0; }
   @media (max-width: 700px) {
     .site-header, .site-footer, main { padding-left: 1.25rem; padding-right: 1.25rem; }
