@@ -141,7 +141,8 @@ import { projects } from '../data/projects';
   h1 { max-width: 1000px; margin: 1.2rem 0 3rem; font-size: clamp(2.8rem, 7.6vw, 6.8rem); line-height: 1.02; letter-spacing: -.075em; font-weight: 600; }
   h1 em, h2 em { color: #a6e3a1; font-style: normal; }
   .hero-grid { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, .8fr); gap: clamp(3rem, 8vw, 8rem); align-items: end; }
-  .hero-copy { max-width: 34rem; margin: 0 0 .45rem; color: #a6adc8; font-size: 1.05rem; }
+  .hero-grid > div { grid-column: 1 / -1; }
+  .hero-copy { grid-column: 2; max-width: 34rem; margin: 0 0 .45rem; color: #a6adc8; font-size: 1.05rem; }
   .text-link, .arrow-link, .contact-link { font-weight: 700; text-decoration-thickness: 1px; text-underline-offset: .35em; }
   .work-section, .about-section { padding: 5.5rem 0; border-bottom: 1px solid #45475a; }
   .section-heading { display: grid; grid-template-columns: 180px minmax(0, 1fr); gap: 2rem; margin-bottom: 3rem; }
@@ -190,6 +191,7 @@ import { projects } from '../data/projects';
     nav { gap: .8rem; font-size: .68rem; }
     .hero { padding-top: 6rem; }
     .hero-grid, .about-section { grid-template-columns: 1fr; gap: 2rem; }
+    .hero-copy { grid-column: 1; }
     .section-heading { display: block; }
     .section-heading .eyebrow { margin-bottom: 1.3rem; }
     .project-list { grid-template-columns: 1fr; }
